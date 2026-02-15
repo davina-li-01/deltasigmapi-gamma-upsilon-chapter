@@ -1,0 +1,165 @@
+/* Delta Sigma Pi Gamma Upsilon Chapter - Modern Landing Page Styles */
+:root {
+  --dsp-purple: #4B286D;
+  --dsp-yellow: #FFD700;
+  --dsp-light: #F9F6FF;
+  --dsp-dark: #2A1833;
+  --glass-bg: rgba(255,255,255,0.18);
+  --glass-border: rgba(255,255,255,0.22);
+  --glass-blur: 8px;
+}
+* {
+  box-sizing: border-box;
+  transition: background 0.2s, box-shadow 0.2s, border 0.2s;
+}
+body {
+  margin: 0;
+  font-family: 'Open Sans', Arial, sans-serif;
+  background: var(--dsp-light);
+  color: var(--dsp-dark);
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--dsp-light) 60%, var(--dsp-yellow) 100%);
+  animation: gradientMove 8s ease-in-out infinite;
+}
+header {
+  background: linear-gradient(90deg, var(--dsp-purple) 70%, var(--dsp-yellow) 100%);
+  color: #fff;
+  padding: 2rem 0 1rem 0;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(75,40,109,0.08);
+  border-bottom-left-radius: 32px;
+  border-bottom-right-radius: 32px;
+}
+header h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.8rem;
+  margin: 0;
+  letter-spacing: 2px;
+}
+header p {
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+  font-weight: 600;
+}
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1rem 2rem 1rem;
+  background: var(--dsp-purple);
+  color: #fff;
+  border-radius: 0 0 32px 32px;
+  box-shadow: 0 4px 24px rgba(75,40,109,0.12);
+  margin-bottom: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 8px rgba(75,40,109,0.12);
+}
+.hero .cta {
+  margin-top: 1.5rem;
+  z-index: 2;
+}
+.cta-btn {
+  background: var(--dsp-yellow);
+  color: var(--dsp-dark);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  padding: 0.9rem 2.2rem;
+  border: none;
+  border-radius: 24px;
+  box-shadow: 0 2px 8px rgba(255,215,0,0.15);
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+  letter-spacing: 0.5px;
+  outline: none;
+  border: 2px solid transparent;
+}
+.cta-btn:hover {
+  background: #FFC700;
+  box-shadow: 0 4px 16px rgba(255,215,0,0.25);
+  border: 2px solid var(--dsp-purple);
+  color: var(--dsp-purple);
+}
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+.feature {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(75,40,109,0.08);
+  padding: 2rem 1.2rem;
+  flex: 1 1 240px;
+  min-width: 220px;
+  max-width: 320px;
+  text-align: center;
+  border-left: 6px solid var(--dsp-purple);
+  position: relative;
+  z-index: 1;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  box-shadow: 0 8px 32px rgba(75,40,109,0.18);
+}
+.feature h3 {
+  color: var(--dsp-purple);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.3rem;
+  margin-bottom: 0.7rem;
+  letter-spacing: 0.5px;
+}
+.feature p {
+  font-size: 1rem;
+  color: var(--dsp-dark);
+}
+footer {
+  background: var(--dsp-dark);
+  color: #fff;
+  text-align: center;
+  padding: 1.2rem 0;
+  font-size: 1rem;
+  border-radius: 32px 32px 0 0;
+  margin-top: 2rem;
+  box-shadow: 0 -2px 8px rgba(75,40,109,0.08);
+}
+@media (max-width: 700px) {
+  .features {
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  .hero {
+    padding: 2rem 0.5rem 1.5rem 0.5rem;
+  }
+  .feature {
+    max-width: 100%;
+  }
+}
+/* SVG wave styling */
+.svg-wave {
+  display: block;
+  width: 100%;
+  height: 80px;
+  margin-bottom: -2rem;
+}
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
