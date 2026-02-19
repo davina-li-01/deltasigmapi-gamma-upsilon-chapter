@@ -1,36 +1,91 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Delta Sigma Pi | Gamma Upsilon</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home | Delta Sigma Pi – Gamma Upsilon</title>
+  <meta name="description" content="Welcome to Delta Sigma Pi Gamma Upsilon at Babson College.">
   <link rel="stylesheet" href="css/styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
-
 <body>
 
 <header class="navbar">
   <div class="nav-container">
-    <div class="logo">ΔΣΠ</div>
-    <nav>
+    <a class="brand" href="index.html" aria-label="Delta Sigma Pi Gamma Upsilon Home">
+      <span class="brand-mark">ΔΣΠ</span>
+      <span class="brand-text">Gamma Upsilon</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary navigation">
       <a href="index.html" class="active">Home</a>
-      <a href="about.html">About</a>
-      <a href="recruitment.html">Recruitment</a>
       <a href="leadership.html">Leadership</a>
-      <a href="contact.html">Contact</a>
+      <a href="recruitment.html">Recruitment</a>
+      <a href="about.html">About</a>
     </nav>
   </div>
 </header>
 
-<section class="hero">
-  <h1>Delta Sigma Pi</h1>
-  <p>Gamma Upsilon Chapter • Babson College</p>
-  <a href="recruitment.html" class="cta-btn">Join the Brotherhood</a>
-</section>
+<main>
+  <section class="hero">
+    <h1>Delta Sigma Pi</h1>
+    <p>Gamma Upsilon Chapter • Babson College</p>
+    <a href="recruitment.html" class="cta-btn">Explore Recruitment</a>
+  </section>
+
+  <section class="section reveal" id="pillars">
+    <div class="content-container">
+      <h2>Our Pillars</h2>
+      <div class="card-grid pillars-grid">
+        <a class="card pillar-link-card" href="professionalism.html" aria-label="Learn more about Professionalism">
+          <h3>Professionalism</h3>
+          <p>We develop principled business leaders through skill-building and real-world preparation.</p>
+        </a>
+        <a class="card pillar-link-card" href="brotherhood.html" aria-label="Learn more about Brotherhood">
+          <h3>Brotherhood</h3>
+          <p>We build lifelong relationships grounded in trust, accountability, and shared success.</p>
+        </a>
+        <a class="card pillar-link-card" href="service.html" aria-label="Learn more about Service">
+          <h3>Service</h3>
+          <p>We give back to our campus and surrounding community through meaningful impact initiatives.</p>
+        </a>
+        <a class="card pillar-link-card" href="scholarship.html" aria-label="Learn more about Scholarship">
+          <h3>Scholarship</h3>
+          <p>We prioritize academic excellence and intellectual growth to support long-term professional success.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section reveal" id="brotherhood-carousel">
+    <div class="content-container">
+      <h2>Brotherhood in Action</h2>
+      <p class="section-intro">A look into chapter life, events, and community.</p>
+      <div class="carousel" aria-label="Carousel of brothers">
+        <button class="carousel-btn prev" aria-label="Previous image">‹</button>
+        <div class="carousel-track">
+          <img class="carousel-slide active" src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80" alt="Brothers networking at a professional event">
+          <img class="carousel-slide" src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1200&q=80" alt="Brothers at a social event">
+          <img class="carousel-slide" src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1200&q=80" alt="Brothers collaborating during a workshop">
+          <img class="carousel-slide" src="https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=1200&q=80" alt="Brothers participating in service activities">
+        </div>
+        <button class="carousel-btn next" aria-label="Next image">›</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section reveal" id="about-dsp">
+    <div class="content-container narrow">
+      <h2>General Information About DSP</h2>
+      <p>Delta Sigma Pi is one of the nation’s largest co-ed professional business fraternities. At Gamma Upsilon, we focus on leadership development, career readiness, and values-based brotherhood at Babson College.</p>
+      <p>Members gain access to professional workshops, alumni mentors, recruitment preparation, and a network that extends across industries and geographies.</p>
+    </div>
+  </section>
+</main>
 
 <footer>
   © 2026 Delta Sigma Pi – Gamma Upsilon Chapter
 </footer>
 
+<script src="script.js"></script>
 </body>
 </html>

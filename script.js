@@ -1,53 +1,64 @@
-// Delta Sigma Pi Gamma Upsilon Chapter - Landing Page Interactivity
-
-document.addEventListener('DOMContentLoaded', function () {
-  // Example: Smooth scroll for CTA button
-  const ctaBtn = document.querySelector('.cta-btn');
-  if (ctaBtn) {
-    ctaBtn.addEventListener('click', function (e) {
-      const joinSection = document.getElementById('join');
-      if (joinSection) {
-        e.preventDefault();
-        joinSection.scrollIntoView({ behavior: 'smooth' });
+document.addEventListener('DOMContentLoaded', () => {
+  const pillarsSelect = document.querySelector('.pillars-select');
+  if (pillarsSelect) {
+    pillarsSelect.addEventListener('change', (event) => {
+      const target = event.target.value;
+      if (target) {
+        window.location.href = target;
       }
     });
-    // Animate CTA button on load
-    ctaBtn.style.transform = 'scale(0.95)';
-    setTimeout(() => {
-      ctaBtn.style.transition = 'transform 0.5s cubic-bezier(.68,-0.55,.27,1.55)';
-      ctaBtn.style.transform = 'scale(1.08)';
-      setTimeout(() => {
-        ctaBtn.style.transform = 'scale(1)';
-      }, 400);
-    }, 300);
   }
 
-  // Scroll reveal for features
-  const features = document.querySelectorAll('.feature');
-  const revealOptions = {
-    threshold: 0.15
-  };
-  const revealOnScroll = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = 1;
-        entry.target.style.transform = 'translateY(0)';
-        observer.unobserve(entry.target);
-      }
+  const revealNodes = document.querySelectorAll('.reveal');
+  if (revealNodes.length) {
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.14 });
+
+    revealNodes.forEach((node) => revealObserver.observe(node));
+  }
+
+  const slides = Array.from(document.querySelectorAll('.carousel-slide'));
+  const prevBtn = document.querySelector('.carousel-btn.prev');
+  const nextBtn = document.querySelector('.carousel-btn.next');
+
+  if (slides.length && prevBtn && nextBtn) {
+    let index = 0;
+    let timerId;
+
+    const showSlide = (nextIndex) => {
+      slides[index].classList.remove('active');
+      index = (nextIndex + slides.length) % slides.length;
+      slides[index].classList.add('active');
+    };
+
+    const nextSlide = () => showSlide(index + 1);
+    const prevSlide = () => showSlide(index - 1);
+
+    const startAuto = () => {
+      timerId = window.setInterval(nextSlide, 4500);
+    };
+
+    const restartAuto = () => {
+      window.clearInterval(timerId);
+      startAuto();
+    };
+
+    nextBtn.addEventListener('click', () => {
+      nextSlide();
+      restartAuto();
     });
-  }, revealOptions);
-  features.forEach(feature => {
-    feature.style.opacity = 0;
-    feature.style.transform = 'translateY(40px)';
-    revealOnScroll.observe(feature);
-  });
-  // Accessibility: focus style for CTA
-  if (ctaBtn) {
-    ctaBtn.addEventListener('focus', function () {
-      ctaBtn.style.boxShadow = '0 0 0 3px #FFD70055';
+
+    prevBtn.addEventListener('click', () => {
+      prevSlide();
+      restartAuto();
     });
-    ctaBtn.addEventListener('blur', function () {
-      ctaBtn.style.boxShadow = '';
-    });
+
+    startAuto();
   }
 });

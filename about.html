@@ -1,33 +1,101 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About | Delta Sigma Pi</title>
   <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
 <header class="navbar">
   <div class="nav-container">
-    <div class="logo">ΔΣΠ</div>
-    <nav>
+    <a class="brand" href="index.html" aria-label="Delta Sigma Pi Gamma Upsilon Home">
+      <span class="brand-mark">ΔΣΠ</span>
+      <span class="brand-text">Gamma Upsilon</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary navigation">
       <a href="index.html">Home</a>
-      <a href="about.html" class="active">About</a>
-      <a href="recruitment.html">Recruitment</a>
       <a href="leadership.html">Leadership</a>
-      <a href="contact.html">Contact</a>
+      <a href="recruitment.html">Recruitment</a>
+      <a href="about.html" class="active">About</a>
     </nav>
   </div>
 </header>
 
 <section class="page-hero">
-  <h1>About Our Chapter</h1>
+  <h1>About Gamma Upsilon</h1>
+  <p>Babson College • Delta Sigma Pi</p>
 </section>
 
 <section class="section">
-  <div class="content-container">
-    <p>Developing principled business leaders at Babson College.</p>
+  <div class="about-layout">
+    <div class="about-left card reveal">
+      <h2>Our Chapter at Babson</h2>
+      <div class="map-wrapper">
+        <svg class="map-graphic" viewBox="0 0 800 360" role="img" aria-label="Map graphic showing where Babson College is located in Massachusetts">
+          <rect x="0" y="0" width="800" height="360" fill="#15102a"></rect>
+          <path d="M170 85 L260 70 L330 95 L405 90 L470 120 L545 118 L590 155 L620 225 L560 265 L495 292 L412 280 L330 262 L250 235 L180 185 Z" fill="#2e2452" stroke="#8a79d0" stroke-width="3"></path>
+          <circle cx="655" cy="158" r="10" fill="#f4c430"></circle>
+          <line x1="648" y1="164" x2="560" y2="215" stroke="#f4c430" stroke-width="4"></line>
+          <text x="570" y="235" fill="#ffffff" font-size="18" font-family="Open Sans, Arial, sans-serif">Babson College</text>
+          <text x="570" y="258" fill="#ffffff" font-size="15" font-family="Open Sans, Arial, sans-serif">Wellesley, Massachusetts</text>
+        </svg>
+      </div>
+      <p><strong>Established:</strong> 1988</p>
+      <p><strong>Next Initiation Period:</strong> Spring 2026</p>
+      <p><strong>Location:</strong> Babson College — Delta Sigma Pi Gamma Upsilon Chapter</p>
+
+      <div class="pillars-dropdown-wrap">
+        <label for="pillars-select"><strong>Our Pillars</strong></label>
+        <select id="pillars-select" class="pillars-select" aria-label="Navigate to pillar pages">
+          <option value="">Select a pillar page</option>
+          <option value="professionalism.html">Professionalism</option>
+          <option value="brotherhood.html">Brotherhood</option>
+          <option value="service.html">Service</option>
+          <option value="scholarship.html">Scholarship</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="about-right stats-grid reveal">
+      <article class="stat-bubble">
+        <h3>Total Babson Initiates</h3>
+        <p>640+</p>
+      </article>
+      <article class="stat-bubble">
+        <h3>Active Brothers</h3>
+        <p>95</p>
+      </article>
+      <article class="stat-bubble">
+        <h3>Chapter Recognitions</h3>
+        <p>32</p>
+      </article>
+      <article class="stat-bubble">
+        <h3>Global DSP Members</h3>
+        <p>300,000+</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section reveal">
+  <div class="content-container industry-layout">
+    <div class="industry-left">
+    <h2>Top Intended Industries</h2>
+    <ul class="industry-list">
+      <li>Finance</li>
+      <li>Consulting</li>
+      <li>Marketing</li>
+      <li>Business Development / Entrepreneurship</li>
+    </ul>
+    </div>
+    <aside class="national-site-card">
+      <h3>National Website</h3>
+      <a class="cta-btn" href="https://www.deltasigmapi.org" target="_blank" rel="noopener noreferrer">Visit deltasigmapi.org</a>
+    </aside>
   </div>
 </section>
 
@@ -35,5 +103,6 @@
   © 2026 Delta Sigma Pi – Gamma Upsilon Chapter
 </footer>
 
+<script src="script.js"></script>
 </body>
 </html>
