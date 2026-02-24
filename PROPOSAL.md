@@ -24,3 +24,52 @@ This is for the members of the Gamma Upsilon Chapter (Group) of Delta Sigma Pi, 
 - How I will get all of the relevant information for the Brothers page and if I can get them in time.
 - What are the relevant information for the about us page that brothers want to see on the website.
 - What the layout of the website will look like.
+
+INTERVIEW:
+Interviewee: Jennie Pan (Senior Vice President) + General Discussion from Chaper
+
+What are the pages you want to see on the website?
+Home page
+Leadership
+Recruitment
+About
+What information do you want on the home page?
+Pillars
+Carousel of images of brothers
+Network (Where brother’s have worked)
+What information do you want on the Leadership Page?
+Eboard members
+Active Brothers
+Inactive Brothers
+For the Brothers, what information would you like?
+Name (First and last)
+Graduating Year
+Concentration
+Image/Headshot
+IF THEY ARE ON EBOARD:
+Eboard position
+What information do you want on the Recruitment page?
+Information about the recruitment process
+Info Session 1 & 2
+Community Service
+Professional
+Social
+Case Event
+Interview
+Contact information
+Link to Instagram
+What information do you want on the About Page?
+On the left
+When was the chapter established
+When is the next initiation period (Spring 2026)
+In little widgets/bubbles on the right
+Total initiates to date for babson
+How many active brothers
+Total chapter (babson specific) recognitions
+Total DSP members globally
+At the bottom: top 4 intended industries for our chapter
+Finance
+Consulting
+Marketing
+Business Development/Entrepreneurship
+Link to national website next to 4 intended industries
