@@ -27,6 +27,54 @@ document.addEventListener('DOMContentLoaded', () => {
   const prevBtn = document.querySelector('.carousel-btn.prev');
   const nextBtn = document.querySelector('.carousel-btn.next');
 
+  const logoMarquee = document.querySelector('.logo-marquee');
+  if (logoMarquee) {
+    let scrollEndTimerId;
+
+    const setUserScrollingState = () => {
+      logoMarquee.classList.add('is-user-scrolling');
+      window.clearTimeout(scrollEndTimerId);
+      scrollEndTimerId = window.setTimeout(() => {
+        logoMarquee.classList.remove('is-user-scrolling');
+      }, 260);
+    };
+
+    const getLoopWidth = () => logoMarquee.scrollWidth / 2;
+
+    const normalizeLoopScroll = () => {
+      const loopWidth = getLoopWidth();
+      if (!loopWidth) {
+        return;
+      }
+
+      if (logoMarquee.scrollLeft >= loopWidth) {
+        logoMarquee.scrollLeft -= loopWidth;
+      }
+    };
+
+    logoMarquee.addEventListener('wheel', (event) => {
+      const hasScrollIntent = Math.abs(event.deltaX) > 0 || Math.abs(event.deltaY) > 0;
+      if (!hasScrollIntent) {
+        return;
+      }
+
+      const dominantDelta = Math.abs(event.deltaX) > Math.abs(event.deltaY)
+        ? event.deltaX
+        : event.deltaY;
+
+      const loopWidth = getLoopWidth();
+      if (dominantDelta < 0 && logoMarquee.scrollLeft <= 1 && loopWidth) {
+        logoMarquee.scrollLeft = loopWidth;
+      }
+
+      logoMarquee.scrollLeft += dominantDelta;
+      normalizeLoopScroll();
+      setUserScrollingState();
+
+      event.preventDefault();
+    }, { passive: false });
+  }
+
   if (slides.length && prevBtn && nextBtn) {
     let index = 0;
     let timerId;

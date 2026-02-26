@@ -970,27 +970,49 @@ p {
 }
 
 .logo-marquee {
+  --logo-marquee-duration: 55s;
   position: relative;
-  overflow: hidden;
-  border-radius: 14px;
-  border: 1px solid var(--glass-border);
-  background: rgba(255, 255, 255, 0.06);
-  padding: 0.9rem 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  border-radius: 0;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x;
+}
+
+.logo-marquee::-webkit-scrollbar {
+  display: none;
 }
 
 .logo-track {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 2.75rem;
   width: max-content;
-  animation: logo-marquee-scroll 55s linear infinite;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  animation: logo-marquee-scroll var(--logo-marquee-duration) linear infinite;
+}
+
+.logo-marquee.is-user-scrolling .logo-track {
+  animation-play-state: paused;
 }
 
 .work-logo {
-  height: 32px;
+  height: 28px;
   width: auto;
   filter: grayscale(1) brightness(0) invert(1);
   opacity: 0.95;
+}
+
+.work-logo--large {
+  height: 34px;
+}
+
+.work-logo--small {
+  height: 22px;
 }
 
 .life-grid {
@@ -1555,7 +1577,15 @@ footer {
   }
 
   .work-logo {
+    height: 20px;
+  }
+
+  .work-logo--large {
     height: 24px;
+  }
+
+  .work-logo--small {
+    height: 16px;
   }
 
   .brothers-filter-wrap {
