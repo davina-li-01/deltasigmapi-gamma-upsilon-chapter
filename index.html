@@ -42,7 +42,7 @@
       </div>
     </div>
     <a class="scroll-indicator" href="#impact-stats" aria-label="Scroll to impact stats">
-      <span></span>
+      <span class="scroll-arrow" aria-hidden="true">↓</span>
     </a>
   </section>
 
@@ -51,22 +51,18 @@
       <h2>Chapter Impact</h2>
       <div class="impact-grid">
         <article class="impact-card">
-          <div class="impact-icon">👥</div>
           <p class="impact-number" data-target="47" data-suffix="+">0</p>
           <p class="impact-label">Active Brothers</p>
         </article>
         <article class="impact-card">
-          <div class="impact-icon">📈</div>
           <p class="impact-number" data-target="95" data-suffix="%">0</p>
           <p class="impact-label">Internship Placement</p>
         </article>
         <article class="impact-card">
-          <div class="impact-icon">🎓</div>
           <p class="impact-number" data-target="1100" data-suffix="+">0</p>
           <p class="impact-label">Total Initiates</p>
         </article>
         <article class="impact-card">
-          <div class="impact-icon">📅</div>
           <p class="impact-number" data-target="25" data-suffix="+">0</p>
           <p class="impact-label">Annual Events</p>
         </article>
@@ -77,35 +73,37 @@
   <section class="section reveal" id="what-makes-us-different">
     <div class="content-container">
       <h2>What Makes Us Different</h2>
-      <div class="differentiator-grid">
-        <article class="diff-card">
-          <div class="diff-icon">💼</div>
+      <div class="differentiator-box">
+        <div class="differentiator-grid">
+          <article class="diff-card">
+            <div class="diff-icon">💼</div>
           <h3>Professional Development</h3>
           <p>Hands-on workshops, interview prep, and networking opportunities that accelerate career readiness.</p>
-        </article>
-        <article class="diff-card">
-          <div class="diff-icon">🤝</div>
+          </article>
+          <article class="diff-card">
+            <div class="diff-icon">🤝</div>
           <h3>Brotherhood</h3>
           <p>A supportive community that pushes each member to grow while building meaningful, lifelong relationships.</p>
-        </article>
-        <article class="diff-card">
-          <div class="diff-icon">🌐</div>
+          </article>
+          <article class="diff-card">
+            <div class="diff-icon">🌐</div>
           <h3>Alumni Network</h3>
           <p>Direct access to alumni across industries who mentor, guide, and open doors for our brothers.</p>
-        </article>
-        <article class="diff-card">
-          <div class="diff-icon">⭐</div>
+          </article>
+          <article class="diff-card">
+            <div class="diff-icon">⭐</div>
           <h3>Leadership Opportunities</h3>
           <p>Real leadership experiences through committee work, chapter operations, and executive board roles.</p>
-        </article>
+          </article>
+        </div>
       </div>
     </div>
   </section>
 
   <section class="section reveal" id="where-brothers-work">
     <div class="content-container">
-      <h2>Where Brothers Work</h2>
-      <p class="section-intro">A flowing look at companies where our brothers have worked.</p>
+      <h2>Beyond DSP</h2>
+      <p class="section-intro">Our network is diverse.</p>
       <div class="logo-marquee" aria-label="Company logos where brothers work">
         <div class="logo-track">
           <img class="work-logo" src="https://logo.clearbit.com/tiktok.com" alt="TikTok logo">
@@ -156,38 +154,29 @@
     </div>
   </section>
 
-  <section class="section reveal" id="chapter-life-preview">
-    <div class="content-container">
-      <h2>Chapter Life Preview</h2>
-      <p class="section-intro">A snapshot of events, recruitment, and brotherhood moments.</p>
-      <div class="life-grid">
-        <img src="images/Org%20Fair%20Spring%202025.JPG" alt="Chapter event photo one">
-        <img src="images/Org%20Fair%20Spring%202025%20(1).JPG" alt="Chapter event photo two">
-        <img src="images/Org%20Fair%20Spring%202025.JPG" alt="Brothers networking at an event">
-        <img src="images/Org%20Fair%20Spring%202025%20(1).JPG" alt="Brothers in chapter life event">
-      </div>
-    </div>
-  </section>
-
   <section class="section reveal" id="testimonials">
     <div class="content-container">
-      <h2>What Brothers Say</h2>
-      <div class="testimonial-grid">
-        <article class="testimonial-card">
-          <img src="https://via.placeholder.com/96x96.png?text=Headshot" alt="Headshot placeholder for brother testimonial one">
-          <p>“DSP gave me mentors, confidence, and lifelong friends who support me in every step of my career.”</p>
-          <h3>Brother, Class of 2026</h3>
-        </article>
-        <article class="testimonial-card">
-          <img src="https://via.placeholder.com/96x96.png?text=Headshot" alt="Headshot placeholder for brother testimonial two">
-          <p>“From recruiting prep to leadership opportunities, this chapter helped me grow professionally and personally.”</p>
-          <h3>Brother, Class of 2027</h3>
-        </article>
-        <article class="testimonial-card">
-          <img src="https://via.placeholder.com/96x96.png?text=Headshot" alt="Headshot placeholder for brother testimonial three">
-          <p>“The alumni network and brotherhood here are unmatched — it’s a community you can count on for life.”</p>
-          <h3>Brother, Class of 2028</h3>
-        </article>
+      <h2>Brother Testimonials</h2>
+      <div class="testimonial-carousel" id="testimonials-carousel" aria-label="Brother testimonials carousel">
+        <button class="testimonial-carousel-btn prev" aria-label="Previous testimonial">‹</button>
+        <div class="testimonial-carousel-track">
+          <article class="testimonial-card testimonial-slide active">
+            <img src="images/adam%20kohn.jpeg" alt="Portrait of a brother testimonial speaker">
+            <p>“DSP gave me mentors, confidence, and lifelong friends who support me in every step of my career.”</p>
+            <h3>Brother, Class of 2026</h3>
+          </article>
+          <article class="testimonial-card testimonial-slide">
+            <img src="images/ava%20beery.jpeg" alt="Portrait of a brother testimonial speaker">
+            <p>“From recruiting prep to leadership opportunities, this chapter helped me grow professionally and personally.”</p>
+            <h3>Brother, Class of 2027</h3>
+          </article>
+          <article class="testimonial-card testimonial-slide">
+            <img src="images/justin%20li.jpeg" alt="Portrait of a brother testimonial speaker">
+            <p>“The alumni network and brotherhood here are unmatched — it’s a community you can count on for life.”</p>
+            <h3>Brother, Class of 2028</h3>
+          </article>
+        </div>
+        <button class="testimonial-carousel-btn next" aria-label="Next testimonial">›</button>
       </div>
     </div>
   </section>
@@ -204,23 +193,6 @@
     </div>
   </section>
 
-  <section class="section reveal" id="brotherhood-carousel">
-    <div class="content-container">
-      <h2>Meet the Brothers</h2>
-      <p class="section-intro">Get a glimpse of our chapter community.</p>
-      <div class="carousel" aria-label="Carousel of brothers">
-        <button class="carousel-btn prev" aria-label="Previous image">‹</button>
-        <div class="carousel-track">
-          <img class="carousel-slide active" src="images/Org%20Fair%20Spring%202025.JPG" alt="Brothers at Org Fair Spring 2025">
-          <img class="carousel-slide" src="images/Org%20Fair%20Spring%202025%20(1).JPG" alt="Brothers at Org Fair Spring 2025 photo 2">
-        </div>
-        <button class="carousel-btn next" aria-label="Next image">›</button>
-      </div>
-      <div class="carousel-cta-wrap">
-        <a href="brothers.html" class="cta-btn">Meet All Brothers</a>
-      </div>
-    </div>
-  </section>
 </main>
 
 <footer>

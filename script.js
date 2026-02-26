@@ -62,6 +62,45 @@ document.addEventListener('DOMContentLoaded', () => {
     startAuto();
   }
 
+  const testimonialSlides = Array.from(document.querySelectorAll('.testimonial-slide'));
+  const testimonialPrevBtn = document.querySelector('.testimonial-carousel-btn.prev');
+  const testimonialNextBtn = document.querySelector('.testimonial-carousel-btn.next');
+
+  if (testimonialSlides.length && testimonialPrevBtn && testimonialNextBtn) {
+    let testimonialIndex = 0;
+    let testimonialTimerId;
+
+    const showTestimonialSlide = (nextIndex) => {
+      testimonialSlides[testimonialIndex].classList.remove('active');
+      testimonialIndex = (nextIndex + testimonialSlides.length) % testimonialSlides.length;
+      testimonialSlides[testimonialIndex].classList.add('active');
+    };
+
+    const nextTestimonialSlide = () => showTestimonialSlide(testimonialIndex + 1);
+    const prevTestimonialSlide = () => showTestimonialSlide(testimonialIndex - 1);
+
+    const startTestimonialAuto = () => {
+      testimonialTimerId = window.setInterval(nextTestimonialSlide, 5200);
+    };
+
+    const restartTestimonialAuto = () => {
+      window.clearInterval(testimonialTimerId);
+      startTestimonialAuto();
+    };
+
+    testimonialNextBtn.addEventListener('click', () => {
+      nextTestimonialSlide();
+      restartTestimonialAuto();
+    });
+
+    testimonialPrevBtn.addEventListener('click', () => {
+      prevTestimonialSlide();
+      restartTestimonialAuto();
+    });
+
+    startTestimonialAuto();
+  }
+
   const aboutTabButtons = Array.from(document.querySelectorAll('.about-tab-btn[data-tab-target]'));
   const aboutTabPanels = Array.from(document.querySelectorAll('.about-tab-panel[data-tab-panel]'));
 

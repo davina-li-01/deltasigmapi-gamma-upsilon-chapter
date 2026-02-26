@@ -219,7 +219,9 @@ p {
 
 .hero-actions {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
   gap: 0.75rem;
   margin-top: 0.5rem;
 }
@@ -247,22 +249,17 @@ p {
   bottom: 1.25rem;
   left: 50%;
   transform: translateX(-50%);
-  width: 26px;
-  height: 44px;
-  border: 2px solid rgba(255, 255, 255, 0.72);
-  border-radius: 999px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.7rem;
+  line-height: 1;
+  opacity: 0.9;
 }
 
-.scroll-indicator span {
-  position: absolute;
-  top: 8px;
-  left: 50%;
-  width: 4px;
-  height: 9px;
-  border-radius: 99px;
-  background: var(--dsp-gold);
-  transform: translateX(-50%);
-  animation: scroll-pulse 1.8s ease-in-out infinite;
+.scroll-arrow {
+  display: inline-block;
+  color: var(--dsp-gold);
+  animation: arrow-bounce 1.4s ease-in-out infinite;
 }
 
 @keyframes hero-gradient-shift {
@@ -271,10 +268,14 @@ p {
   100% { background-position: 0% 40%; }
 }
 
-@keyframes scroll-pulse {
-  0% { opacity: 1; transform: translate(-50%, 0); }
-  70% { opacity: 0.1; transform: translate(-50%, 14px); }
-  100% { opacity: 0; transform: translate(-50%, 14px); }
+@keyframes arrow-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8px);
+  }
 }
 
 .page-hero {
@@ -483,6 +484,15 @@ p {
   text-align: center;
 }
 
+.impact-icon-image {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  margin-bottom: 0.55rem;
+}
+
 .impact-icon,
 .diff-icon {
   font-size: 1.35rem;
@@ -491,32 +501,71 @@ p {
 
 .impact-number {
   font-family: 'Montserrat', sans-serif;
-  font-size: clamp(1.45rem, 2.2vw, 1.95rem);
+  font-size: clamp(2.4rem, 6.2vw, 5.2rem);
   font-weight: 700;
   color: var(--dsp-gold);
+  line-height: 1;
+  text-shadow: 0 0 20px rgba(244, 196, 48, 0.25);
 }
 
 .impact-label {
-  margin-top: 0.2rem;
+  margin-top: 0.55rem;
+  font-size: 1.08rem;
+  letter-spacing: 0.01em;
+}
+
+.impact-card {
+  background: transparent;
+  border: 0;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  box-shadow: none;
+  padding: 0.35rem 0.25rem;
+}
+
+.impact-icon,
+.impact-icon-image {
+  display: none;
 }
 
 .differentiator-grid {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.differentiator-box {
+  border-radius: 0;
+  background: transparent;
+  border: 0;
+  padding: 0;
 }
 
 .diff-card {
   padding: 1.15rem;
+  background:
+    linear-gradient(135deg, rgba(111, 45, 255, 0.26), rgba(244, 196, 48, 0.18)),
+    rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(208, 174, 255, 0.42);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    0 14px 28px rgba(37, 8, 74, 0.34);
   transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
 .diff-card:hover {
   transform: translateY(-4px);
-  border-color: rgba(244, 196, 48, 0.58);
+  border-color: rgba(244, 196, 48, 0.72);
 }
 
 .diff-card h3 {
   color: var(--dsp-gold);
   margin-bottom: 0.45rem;
+  font-size: calc(1.16rem + 2px);
+}
+
+.diff-card p {
+  font-size: calc(1.04rem + 2px);
 }
 
 .member-card img {
@@ -986,6 +1035,84 @@ p {
   margin-top: 0.5rem;
 }
 
+.testimonial-carousel {
+  position: relative;
+  max-width: var(--max-width);
+  width: 100%;
+  margin: 1rem auto 0;
+}
+
+.testimonial-carousel-track {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.testimonial-slide {
+  display: none;
+  text-align: center;
+}
+
+.testimonial-slide.active {
+  display: block;
+}
+
+.testimonial-carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 999px;
+  font-size: 1.7rem;
+  cursor: pointer;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.testimonial-carousel-btn.prev {
+  left: 16px;
+}
+
+.testimonial-carousel-btn.next {
+  right: 16px;
+}
+
+#testimonials .testimonial-card {
+  max-width: 100%;
+  width: 100%;
+  min-height: 380px;
+  padding: clamp(1.75rem, 3vw, 2.8rem) clamp(1.4rem, 4vw, 4rem);
+  display: grid;
+  place-items: center;
+}
+
+#testimonials .testimonial-slide {
+  display: none;
+}
+
+#testimonials .testimonial-slide.active {
+  display: grid;
+}
+
+#testimonials .testimonial-card img {
+  width: 120px;
+  height: 120px;
+  margin-bottom: 1rem;
+}
+
+#testimonials .testimonial-card p {
+  max-width: 900px;
+  font-size: clamp(1.15rem, 2vw, 1.55rem);
+  line-height: 1.7;
+}
+
+#testimonials .testimonial-card h3 {
+  font-size: clamp(1rem, 1.4vw, 1.2rem);
+  margin-top: 0.85rem;
+}
+
 .recruitment-banner {
   border-radius: 20px;
   padding: 1.35rem 1.45rem;
@@ -1316,8 +1443,12 @@ footer {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .testimonial-grid {
-    grid-template-columns: 1fr;
+  .testimonial-carousel-btn.prev {
+    left: 10px;
+  }
+
+  .testimonial-carousel-btn.next {
+    right: 10px;
   }
 
   .recruitment-banner {
@@ -1393,19 +1524,30 @@ footer {
     padding-top: 1rem;
   }
 
-  .hero-actions {
-    flex-direction: column;
-    align-items: center;
-  }
-
   .scroll-indicator {
     display: none;
+  }
+
+  .hero-actions .cta-btn,
+  .hero-actions .btn-secondary {
+    padding: 0.8rem 1rem;
+    font-size: 0.88rem;
   }
 
   .impact-grid,
   .differentiator-grid,
   .life-grid {
     grid-template-columns: 1fr;
+  }
+
+  #testimonials .testimonial-card {
+    min-height: 330px;
+    padding: 1.35rem 1.2rem;
+  }
+
+  #testimonials .testimonial-card img {
+    width: 92px;
+    height: 92px;
   }
 
   .pillar-split-card {
