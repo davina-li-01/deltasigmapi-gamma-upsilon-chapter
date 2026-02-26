@@ -521,6 +521,253 @@ p {
   font-weight: 600;
 }
 
+/* ================= LEADERSHIP GRID (BROTHERS PAGE) ================= */
+
+.leadership-section {
+  background: transparent;
+  padding: 4.5rem 1.25rem;
+}
+
+.leadership-container {
+  max-width: 1240px;
+}
+
+.leadership-section h2 {
+  color: #ffffff;
+  margin-bottom: 2rem;
+  letter-spacing: 0.01em;
+}
+
+.leadership-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 2.25rem 1.7rem;
+  margin-top: 0;
+}
+
+.leadership-grid .leadership-card {
+  grid-column: span 3;
+  max-width: none;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  color: #f6f3ff;
+  cursor: pointer;
+  text-align: center;
+}
+
+.leadership-image-wrap {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  border-radius: 14px;
+  transition: background-color 0.25s ease;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08), 0 0 26px rgba(111, 45, 255, 0.22);
+  position: relative;
+}
+
+.leadership-image-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(to top, rgba(18, 0, 34, 0.62) 0%, rgba(18, 0, 34, 0.22) 36%, rgba(18, 0, 34, 0) 68%);
+  pointer-events: none;
+}
+
+.leadership-image-wrap img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  border: 0;
+  border-radius: 14px;
+  margin-bottom: 0;
+  transition: transform 0.35s ease;
+}
+
+.leadership-card h3 {
+  color: #ffffff;
+  margin: 1rem 0 0.35rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.leadership-card .leader-title {
+  color: #f0e8ff;
+  font-size: 0.95rem;
+  margin-bottom: 0.15rem;
+  font-weight: 700;
+}
+
+.leadership-card .leader-location,
+.leadership-card .leader-detail {
+  color: #cfc2e6;
+  font-size: 0.9rem;
+  margin-bottom: 0.12rem;
+}
+
+.leadership-card.featured .leadership-image-wrap {
+  background: rgba(244, 196, 48, 0.18);
+}
+
+.leadership-card:hover .leadership-image-wrap {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.leadership-card:hover .leadership-image-wrap img {
+  transform: scale(1.03);
+}
+
+.leadership-card .leader-location,
+.leadership-card .leader-detail:last-of-type {
+  display: none;
+}
+
+.brothers-page .content-container {
+  max-width: 1240px;
+}
+
+.brothers-page {
+  background:
+    radial-gradient(circle at 20% 25%, rgba(111, 45, 255, 0.42), transparent 48%),
+    radial-gradient(circle at 78% 70%, rgba(244, 196, 48, 0.19), transparent 46%),
+    linear-gradient(140deg, #17002f 0%, #210043 42%, #140028 100%);
+}
+
+.brothers-subsection h2 {
+  color: #ffffff;
+  margin-bottom: 2rem;
+}
+
+.brothers-page .member-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 2.25rem 1.7rem;
+  justify-content: stretch;
+}
+
+.brothers-page .member-grid .member-card {
+  grid-column: span 3;
+  max-width: none;
+  flex: initial;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  color: #f6f3ff;
+  cursor: pointer;
+  text-align: center;
+  position: relative;
+  isolation: isolate;
+}
+
+.brothers-page .member-card img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  border: 0;
+  border-radius: 14px;
+  margin-bottom: 0;
+  transition: transform 0.35s ease, filter 0.35s ease;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08), 0 0 26px rgba(111, 45, 255, 0.2);
+}
+
+.brothers-page .member-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 14px;
+  z-index: 2;
+  opacity: 1;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+  background: linear-gradient(to top, rgba(18, 0, 34, 0.62) 0%, rgba(18, 0, 34, 0.22) 36%, rgba(18, 0, 34, 0) 68%);
+}
+
+.brothers-page .member-card h3 {
+  position: relative;
+  z-index: 3;
+  color: #ffffff;
+  margin: 1rem 0 0.35rem;
+  font-size: 1.12rem;
+}
+
+.brothers-page .member-card p {
+  position: relative;
+  z-index: 3;
+  margin-bottom: 0.18rem;
+  color: #cfc2e6;
+  font-size: 0.9rem;
+}
+
+.brothers-page .member-card p strong {
+  color: #f0e8ff;
+  font-weight: 600;
+}
+
+.brothers-page .member-card:hover img {
+  transform: none;
+  filter: none;
+}
+
+.brothers-page .member-card:hover::after {
+  opacity: 1;
+}
+
+.brothers-subsection .member-card p:first-of-type {
+  display: none;
+}
+
+.brothers-subsection .member-card p strong {
+  display: none;
+}
+
+/* Center incomplete final rows (desktop: 4-up via 12-col spans) */
+.leadership-grid > .leadership-card:last-child:nth-child(4n + 1),
+.brothers-page .member-grid > .member-card:last-child:nth-child(4n + 1) {
+  grid-column: 5 / span 3;
+}
+
+.leadership-grid > .leadership-card:nth-last-child(2):nth-child(4n + 1),
+.brothers-page .member-grid > .member-card:nth-last-child(2):nth-child(4n + 1) {
+  grid-column: 4 / span 3;
+}
+
+.leadership-grid > .leadership-card:last-child:nth-child(4n + 2),
+.brothers-page .member-grid > .member-card:last-child:nth-child(4n + 2) {
+  grid-column: 7 / span 3;
+}
+
+.leadership-grid > .leadership-card:nth-last-child(3):nth-child(4n + 1),
+.brothers-page .member-grid > .member-card:nth-last-child(3):nth-child(4n + 1) {
+  grid-column: 2 / span 3;
+}
+
+.leadership-grid > .leadership-card:nth-last-child(2):nth-child(4n + 2),
+.brothers-page .member-grid > .member-card:nth-last-child(2):nth-child(4n + 2) {
+  grid-column: 5 / span 3;
+}
+
+.leadership-grid > .leadership-card:last-child:nth-child(4n + 3),
+.brothers-page .member-grid > .member-card:last-child:nth-child(4n + 3) {
+  grid-column: 8 / span 3;
+}
+
 /* ================= CAROUSEL ================= */
 
 .carousel {
@@ -993,6 +1240,29 @@ footer {
     flex-basis: calc((100% - (2 * 1.1rem)) / 3);
     max-width: calc((100% - (2 * 1.1rem)) / 3);
   }
+
+  .leadership-grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 1.9rem 1.35rem;
+  }
+
+  .leadership-grid .leadership-card {
+    grid-column: span 3;
+  }
+
+  .brothers-page .member-grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 1.9rem 1.35rem;
+  }
+
+  .brothers-page .member-grid .member-card {
+    grid-column: span 3;
+  }
+
+  .leadership-grid > .leadership-card:last-child:nth-child(2n + 1),
+  .brothers-page .member-grid > .member-card:last-child:nth-child(2n + 1) {
+    grid-column: 2 / span 3;
+  }
 }
 
 @media (max-width: 720px) {
@@ -1047,5 +1317,27 @@ footer {
   .member-grid .member-card {
     flex-basis: 100%;
     max-width: 100%;
+  }
+
+  .leadership-grid {
+    grid-template-columns: 1fr;
+    gap: 1.7rem;
+  }
+
+  .leadership-grid .leadership-card {
+    grid-column: 1 / -1;
+  }
+
+  .brothers-page .member-grid {
+    grid-template-columns: 1fr;
+    gap: 1.7rem;
+  }
+
+  .brothers-page .member-grid .member-card {
+    grid-column: 1 / -1;
+  }
+
+  .leadership-section {
+    padding: 3.5rem 1rem;
   }
 }
