@@ -125,4 +125,70 @@ document.addEventListener('DOMContentLoaded', () => {
 
     impactNumbers.forEach((node) => counterObserver.observe(node));
   }
+
+  const concentrationFilter = document.querySelector('[data-brother-filter="concentration"]');
+  const classFilter = document.querySelector('[data-brother-filter="year"]');
+  const brotherCards = Array.from(document.querySelectorAll('.filterable-brothers-grid .member-card'));
+
+  if (concentrationFilter && classFilter && brotherCards.length) {
+    const normalizeText = (value) => value.replace(/\s+/g, ' ').trim();
+
+    const extractCardField = (card, fieldLabel) => {
+      const infoRows = Array.from(card.querySelectorAll('p'));
+      const row = infoRows.find((item) => item.textContent.toLowerCase().includes(`${fieldLabel.toLowerCase()}:`));
+      if (!row) {
+        return '';
+      }
+
+      const parts = row.textContent.split(':');
+      return normalizeText(parts.slice(1).join(':'));
+    };
+
+    const cardsWithMeta = brotherCards.map((card) => ({
+      card,
+      concentration: extractCardField(card, 'Concentration'),
+      year: extractCardField(card, 'Year')
+    }));
+
+    const uniqueConcentrations = Array.from(
+      new Set(cardsWithMeta.map((item) => item.concentration).filter(Boolean))
+    ).sort((a, b) => a.localeCompare(b));
+
+    const uniqueYears = Array.from(
+      new Set(cardsWithMeta.map((item) => item.year).filter(Boolean))
+    ).sort((a, b) => {
+      const yearA = Number((a.match(/\d{4}/) || [0])[0]);
+      const yearB = Number((b.match(/\d{4}/) || [0])[0]);
+      return yearA - yearB;
+    });
+
+    const appendOptions = (selectNode, values) => {
+      values.forEach((value) => {
+        const option = document.createElement('option');
+        option.value = value;
+        option.textContent = value;
+        selectNode.appendChild(option);
+      });
+    };
+
+    appendOptions(concentrationFilter, uniqueConcentrations);
+    appendOptions(classFilter, uniqueYears);
+
+    const applyBrotherFilters = () => {
+      const selectedConcentration = concentrationFilter.value;
+      const selectedYear = classFilter.value;
+
+      cardsWithMeta.forEach((item) => {
+        const matchesConcentration = !selectedConcentration || item.concentration === selectedConcentration;
+        const matchesYear = !selectedYear || item.year === selectedYear;
+        const isVisible = matchesConcentration && matchesYear;
+
+        item.card.classList.toggle('is-hidden-by-filter', !isVisible);
+      });
+    };
+
+    concentrationFilter.addEventListener('change', applyBrotherFilters);
+    classFilter.addEventListener('change', applyBrotherFilters);
+    applyBrotherFilters();
+  }
 });

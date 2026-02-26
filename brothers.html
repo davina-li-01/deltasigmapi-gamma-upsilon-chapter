@@ -24,8 +24,20 @@
 </header>
 
 <section class="page-hero">
-  <h1>Leadership & Brotherhood</h1>
-  <p>Meet our Leadership, Active Brothers, and Brothers Abroad/Non-Active</p>
+  <h1>Brotherhood</h1>
+  <p>Our brotherhood is a unique and diverse community of Babson students studying business and growing as leaders, while supporting each other through every step of college and beyond.</p>
+</section>
+
+<section class="brothers-filter-section" aria-label="Filter brothers">
+  <div class="content-container brothers-filter-wrap">
+    <select id="concentration-filter" class="brothers-filter-input" data-brother-filter="concentration" aria-label="Filter by concentration">
+      <option value="">All Concentrations</option>
+    </select>
+
+    <select id="class-filter" class="brothers-filter-input" data-brother-filter="year" aria-label="Filter by class year">
+      <option value="">All Classes</option>
+    </select>
+  </div>
 </section>
 
 <section class="section leadership-section" aria-labelledby="leadership-heading">
@@ -189,7 +201,7 @@
 <section class="section brothers-subsection">
   <div class="content-container">
     <h2>Active Brothers</h2>
-    <div class="member-grid brothers-grid">
+    <div class="member-grid brothers-grid filterable-brothers-grid">
       <article class="member-card">
         <img src="images/amir.png" alt="Headshot of Amir Afzali">
         <h3>Amir Afzali</h3>
@@ -428,7 +440,7 @@
 <section class="section brothers-subsection">
   <div class="content-container">
     <h2>Non-Active Brothers/Abroad</h2>
-    <div class="member-grid brothers-grid">
+    <div class="member-grid brothers-grid filterable-brothers-grid">
       <article class="member-card">
         <img src="images/logan%20back.jpeg" alt="Headshot of Logan Back">
         <h3>Logan Back</h3>
