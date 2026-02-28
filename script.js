@@ -216,9 +216,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const concentrationFilter = document.querySelector('[data-brother-filter="concentration"]');
   const classFilter = document.querySelector('[data-brother-filter="year"]');
   const brotherCards = Array.from(document.querySelectorAll('.filterable-brothers-grid .member-card'));
+  const leadershipCards = Array.from(document.querySelectorAll('.leadership-grid .leadership-card'));
 
-  if (concentrationFilter && classFilter && brotherCards.length) {
+  if (concentrationFilter && classFilter && (brotherCards.length || leadershipCards.length)) {
     const normalizeText = (value) => value.replace(/\s+/g, ' ').trim();
+    const normalizeComparable = (value) => normalizeText(value).toLowerCase();
 
     const extractCardField = (card, fieldLabel) => {
       const infoRows = Array.from(card.querySelectorAll('p'));
@@ -231,14 +233,60 @@ document.addEventListener('DOMContentLoaded', () => {
       return normalizeText(parts.slice(1).join(':'));
     };
 
-    const cardsWithMeta = brotherCards.map((card) => ({
+    const parseConcentrationTags = (value) => {
+      const normalized = normalizeText(value);
+      if (!normalized) {
+        return [];
+      }
+
+      const parts = normalized
+        .split(/\s*(?:&|\/|,|\band\b|·)\s*/i)
+        .map((item) => normalizeText(item))
+        .filter(Boolean);
+
+      const lowerParts = parts.map((part) => part.toLowerCase());
+      const tags = new Set(parts);
+
+      if (lowerParts.includes('strategy') && lowerParts.includes('consulting')) {
+        tags.add('Strategy Consulting');
+      }
+
+      return Array.from(tags);
+    };
+
+    const parseLeadershipDetails = (card) => {
+      const primaryDetail = card.querySelector('.leader-detail');
+      const detailText = normalizeText(primaryDetail ? primaryDetail.textContent : '');
+      const [yearPart = '', concentrationPart = ''] = detailText.split('·').map((item) => normalizeText(item));
+
+      return {
+        year: yearPart,
+        concentration: concentrationPart
+      };
+    };
+
+    const brotherCardsWithMeta = brotherCards.map((card) => ({
       card,
       concentration: extractCardField(card, 'Concentration'),
-      year: extractCardField(card, 'Year')
+      year: extractCardField(card, 'Year'),
+      concentrationTags: parseConcentrationTags(extractCardField(card, 'Concentration'))
     }));
 
+    const leadershipCardsWithMeta = leadershipCards.map((card) => {
+      const leadershipDetails = parseLeadershipDetails(card);
+
+      return {
+        card,
+        concentration: leadershipDetails.concentration,
+        year: leadershipDetails.year,
+        concentrationTags: parseConcentrationTags(leadershipDetails.concentration)
+      };
+    });
+
+    const cardsWithMeta = [...brotherCardsWithMeta, ...leadershipCardsWithMeta];
+
     const uniqueConcentrations = Array.from(
-      new Set(cardsWithMeta.map((item) => item.concentration).filter(Boolean))
+      new Set(cardsWithMeta.flatMap((item) => item.concentrationTags).filter(Boolean))
     ).sort((a, b) => a.localeCompare(b));
 
     const uniqueYears = Array.from(
@@ -264,10 +312,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const applyBrotherFilters = () => {
       const selectedConcentration = concentrationFilter.value;
       const selectedYear = classFilter.value;
+      const selectedConcentrationComparable = normalizeComparable(selectedConcentration);
+      const selectedYearComparable = normalizeComparable(selectedYear);
 
       cardsWithMeta.forEach((item) => {
-        const matchesConcentration = !selectedConcentration || item.concentration === selectedConcentration;
-        const matchesYear = !selectedYear || item.year === selectedYear;
+        const cardConcentrationComparable = normalizeComparable(item.concentration);
+        const cardConcentrationTagComparables = item.concentrationTags.map((tag) => normalizeComparable(tag));
+        const cardYearComparable = normalizeComparable(item.year);
+
+        const matchesConcentration = !selectedConcentrationComparable
+          || cardConcentrationComparable.includes(selectedConcentrationComparable)
+          || cardConcentrationTagComparables.includes(selectedConcentrationComparable);
+        const matchesYear = !selectedYearComparable || cardYearComparable === selectedYearComparable;
         const isVisible = matchesConcentration && matchesYear;
 
         item.card.classList.toggle('is-hidden-by-filter', !isVisible);
