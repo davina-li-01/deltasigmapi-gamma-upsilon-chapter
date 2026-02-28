@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="540" viewBox="0 0 420 540" role="img" aria-label="Leadership Opportunities placeholder">
+  <defs>
+    <linearGradient id="bg4" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fde8a7"/>
+      <stop offset="100%" stop-color="#dfd4ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="420" height="540" fill="url(#bg4)"/>
+  <polygon points="210,110 244,176 318,186 264,238 278,312 210,276 142,312 156,238 102,186 176,176" fill="#ffffff" fill-opacity="0.68"/>
+  <rect x="114" y="332" width="192" height="84" rx="16" fill="#ffffff" fill-opacity="0.62"/>
+  <text x="210" y="500" text-anchor="middle" fill="#4b1b8a" font-family="Arial, sans-serif" font-size="24" font-weight="700">Placeholder 4</text>
+</svg>

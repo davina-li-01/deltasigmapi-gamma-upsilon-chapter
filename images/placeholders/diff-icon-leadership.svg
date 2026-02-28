@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96" role="img" aria-label="Leadership icon">
+  <defs>
+    <linearGradient id="g4" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#5b24a8"/>
+      <stop offset="100%" stop-color="#8d4ce6"/>
+    </linearGradient>
+  </defs>
+  <path d="M48 14l9 18 20 3-14 14 3 20-18-9-18 9 3-20-14-14 20-3z" fill="none" stroke="url(#g4)" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M48 36v22" stroke="#f4c430" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="48" cy="64" r="4" fill="#f4c430"/>
+</svg>
