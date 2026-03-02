@@ -23,6 +23,120 @@ document.addEventListener('DOMContentLoaded', () => {
     revealNodes.forEach((node) => revealObserver.observe(node));
   }
 
+  const rushCarousel = document.querySelector('[data-rush-carousel]');
+  if (rushCarousel) {
+    const rushViewport = rushCarousel.querySelector('.rush-steps-viewport');
+    const rushTrack = rushCarousel.querySelector('[data-rush-track]');
+    const rushSlides = Array.from(rushCarousel.querySelectorAll('[data-rush-slide]'));
+    const rushDots = Array.from(rushCarousel.querySelectorAll('.rush-step-dot'));
+    const rushPrevBtn = rushCarousel.querySelector('[data-rush-prev]');
+    const rushNextBtn = rushCarousel.querySelector('[data-rush-next]');
+
+    if (rushViewport && rushTrack && rushSlides.length && rushPrevBtn && rushNextBtn) {
+      const totalRushSlides = rushSlides.length;
+      const firstClone = rushSlides[0].cloneNode(true);
+      const lastClone = rushSlides[totalRushSlides - 1].cloneNode(true);
+
+      firstClone.setAttribute('aria-hidden', 'true');
+      lastClone.setAttribute('aria-hidden', 'true');
+
+      rushTrack.appendChild(firstClone);
+      rushTrack.insertBefore(lastClone, rushTrack.firstChild);
+
+      let workingRushSlides = Array.from(rushTrack.children);
+      let rushIndex = 1;
+      let rushAutoTimerId;
+
+      const getLogicalRushIndex = () => {
+        if (!totalRushSlides) {
+          return 0;
+        }
+
+        return (rushIndex - 1 + totalRushSlides) % totalRushSlides;
+      };
+
+      const updateRushDots = () => {
+        const logicalIndex = getLogicalRushIndex();
+        rushDots.forEach((dot, dotIndex) => {
+          dot.classList.toggle('is-active', dotIndex === logicalIndex);
+        });
+      };
+
+      const updateRushSlideClasses = () => {
+        rushSlides.forEach((slide, slideIndex) => {
+          slide.classList.toggle('is-active', slideIndex === getLogicalRushIndex());
+        });
+      };
+
+      const positionRushTrack = (animate = true) => {
+        const activeSlide = workingRushSlides[rushIndex];
+        if (!activeSlide) {
+          return;
+        }
+
+        rushTrack.style.transition = animate
+          ? 'transform 560ms cubic-bezier(0.22, 0.61, 0.36, 1)'
+          : 'none';
+
+        const viewportWidth = rushViewport.clientWidth;
+        const slideWidth = activeSlide.offsetWidth;
+        const offset = activeSlide.offsetLeft;
+        const centerOffset = (viewportWidth - slideWidth) / 2;
+        rushTrack.style.transform = `translate3d(${centerOffset - offset}px, 0, 0)`;
+      };
+
+      const renderRushCarousel = (animate = true) => {
+        updateRushSlideClasses();
+        updateRushDots();
+        positionRushTrack(animate);
+      };
+
+      const showRushSlide = (nextIndex, animate = true) => {
+        rushIndex = nextIndex;
+        renderRushCarousel(animate);
+      };
+
+      const startRushAuto = () => {
+        rushAutoTimerId = window.setInterval(() => {
+          showRushSlide(rushIndex + 1);
+        }, 5400);
+      };
+
+      const restartRushAuto = () => {
+        window.clearInterval(rushAutoTimerId);
+        startRushAuto();
+      };
+
+      rushNextBtn.addEventListener('click', () => {
+        showRushSlide(rushIndex + 1);
+        restartRushAuto();
+      });
+
+      rushPrevBtn.addEventListener('click', () => {
+        showRushSlide(rushIndex - 1);
+        restartRushAuto();
+      });
+
+      rushTrack.addEventListener('transitionend', () => {
+        if (rushIndex === 0) {
+          rushIndex = totalRushSlides;
+          renderRushCarousel(false);
+        } else if (rushIndex === workingRushSlides.length - 1) {
+          rushIndex = 1;
+          renderRushCarousel(false);
+        }
+      });
+
+      window.addEventListener('resize', () => {
+        workingRushSlides = Array.from(rushTrack.children);
+        positionRushTrack(false);
+      });
+
+      renderRushCarousel(false);
+      startRushAuto();
+    }
+  }
+
   const slides = Array.from(document.querySelectorAll('.carousel-slide'));
   const prevBtn = document.querySelector('.carousel-btn.prev');
   const nextBtn = document.querySelector('.carousel-btn.next');
