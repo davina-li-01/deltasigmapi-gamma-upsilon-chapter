@@ -1,4 +1,39 @@
 document.addEventListener('DOMContentLoaded', () => {
+  const navToggleButton = document.querySelector('.nav-toggle');
+  const navLinksContainer = document.querySelector('.nav-links');
+  if (navToggleButton && navLinksContainer) {
+    const setNavState = (isOpen) => {
+      navLinksContainer.classList.toggle('nav-open', isOpen);
+      navToggleButton.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    };
+
+    navToggleButton.addEventListener('click', () => {
+      const shouldOpen = navToggleButton.getAttribute('aria-expanded') !== 'true';
+      setNavState(shouldOpen);
+    });
+
+    navLinksContainer.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        setNavState(false);
+      });
+    });
+
+    document.addEventListener('click', (event) => {
+      const clickedInsideNav = navLinksContainer.contains(event.target)
+        || navToggleButton.contains(event.target);
+
+      if (!clickedInsideNav) {
+        setNavState(false);
+      }
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 900) {
+        setNavState(false);
+      }
+    });
+  }
+
   const pillarsSelect = document.querySelector('.pillars-select');
   if (pillarsSelect) {
     pillarsSelect.addEventListener('change', (event) => {

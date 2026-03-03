@@ -12,10 +12,17 @@
 <header class="navbar">
   <div class="nav-container">
     <a class="brand" href="index.html" aria-label="Delta Sigma Pi Gamma Upsilon Home">
-      <span class="brand-mark">ΔΣΠ</span>
+      <span class="brand-mark" aria-hidden="true">
+        <img class="brand-logo" src="images/logos/dsp%20seal.jpg" alt="">
+      </span>
       <span class="brand-text">Gamma Upsilon</span>
     </a>
-    <nav class="nav-links" aria-label="Primary navigation">
+    <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav class="nav-links" id="primary-nav" aria-label="Primary navigation">
       <a href="index.html">Home</a>
       <a href="brothers.html">Brothers</a>
       <a href="recruitment.html" class="active">Recruitment</a>
@@ -29,7 +36,11 @@
   <p>Learn the process and prepare for Spring 2026</p>
 </section>
 
-<section class="section">
+<a class="page-scroll-indicator" href="#recruitment-process" aria-label="Scroll to recruitment process">
+  <span class="scroll-arrow" aria-hidden="true">↓</span>
+</a>
+
+<section class="section" id="recruitment-process">
   <div class="content-container">
     <h2>Recruitment Process</h2>
     <p>Our recruitment process is designed to help candidates understand Delta Sigma Pi, meet brothers, and demonstrate values-driven leadership. Each event evaluates professionalism, collaboration, communication, and cultural alignment with the chapter.</p>
@@ -148,7 +159,7 @@
   <div class="content-container recruitment-contact">
     <h2>Contact Information</h2>
     <div class="recruitment-contact-row">
-      <p class="recruitment-email">Email: <a href="mailto:recruitment@dspgammaupsilon.org">recruitment@dspgammaupsilon.org</a></p>
+      <p class="recruitment-email">Email: <a href="mailto:jpan4@babson.edu">jpan4@babson.edu</a></p>
       <a class="recruitment-instagram" href="https://www.instagram.com/dspgammaupsilon" target="_blank" rel="noopener noreferrer" aria-label="Visit Delta Sigma Pi Gamma Upsilon on Instagram">
         <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
           <rect x="3" y="3" width="18" height="18" rx="5"></rect>
@@ -161,7 +172,16 @@
 </section>
 
 <footer>
-  © 2026 Delta Sigma Pi – Gamma Upsilon Chapter
+  <div class="footer-content">
+    <span>© 2026 Delta Sigma Pi – Gamma Upsilon Chapter</span>
+    <a class="footer-instagram" href="https://www.instagram.com/dspgammaupsilon" target="_blank" rel="noopener noreferrer" aria-label="Visit Delta Sigma Pi Gamma Upsilon on Instagram">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+        <circle cx="12" cy="12" r="4.2"></circle>
+        <circle cx="17.5" cy="6.5" r="1.15"></circle>
+      </svg>
+    </a>
+  </div>
 </footer>
 
 <script src="script.js"></script>
